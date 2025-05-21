@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Gemmes et Bijoux</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+    }
+    .top-bar, .main-menu {
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    .top-bar a, .main-menu a {
+      color: #000;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 30px;
+      font-size: 0.8rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .main-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.7rem;
+      font-weight: 400;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .main-menu {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 8px 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      font-size: 0.9rem;
+    }
+    .main-menu a {
+      letter-spacing: 1px;
+    }
+    .hero-banner {
+      background-image: url('images/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    }
+    .hero-banner .btn {
+      font-weight: bold;
+      border-radius: 30px;
+      padding: 10px 25px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div>
+        <a href="#">Contact Us</a>
+        <a href="#">Services</a>
+      </div>
+      <div>
+        <a href="cart.html"><i class="bi bi-bag"></i></a>
+      </div>
+    </div>
+    <div class="main-logo">Gemmes et Bijoux</div>
+    <nav class="main-menu">
+  <a href="index.html">Home</a>
+  <a href="collections.html">Collections</a>
+  <a href="services.html">Services</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
+  </header>
+
+  <main>
+    <section class="hero-banner">
+      <div class="container">
+        <h1 class="display-4 fw-bold">Timeless Luxury, Redefined</h1>
+        <p class="lead">Explore our exclusive handcrafted jewelry collections.</p>
+        <a href="collections.html" class="btn btn-light btn-lg">Shop Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-light text-center p-3">
+    <p>&copy; 2025 Gemmes et Bijoux</p>
+  </footer>
+</body>
+</html>
 
