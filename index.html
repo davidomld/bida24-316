@@ -27,7 +27,7 @@
       justify-content: space-between;
       padding: 6px 30px;
       font-size: 0.8rem;
-      border-bottom: 1px solid #ddd;
+      /* border-bottom: 1px solid #ddd;  <-- REMOVED THIS LINE */
     }
     .main-logo {
       font-family: 'Playfair Display', serif;
@@ -41,8 +41,8 @@
       justify-content: center;
       gap: 30px;
       padding: 8px 0;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
+      /* border-top: 1px solid #ddd;    <-- REMOVED THIS LINE */
+      /* border-bottom: 1px solid #ddd; <-- REMOVED THIS LINE */
       font-size: 0.9rem;
     }
     .main-menu a {
@@ -81,12 +81,12 @@
     </div>
     <div class="main-logo">Gemmes et Bijoux</div>
     <nav class="main-menu">
-  <a href="index.html">Home</a>
-  <a href="collections.html">Collections</a>
-  <a href="services.html">Services</a>
-  <a href="testimonials.html">Testimonials</a>
-  <a href="contact.html">Contact Us</a>
-</nav>
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="services.html">Services</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
   </header>
 
   <main>
@@ -96,18 +96,17 @@
         <p class="lead">Explore our exclusive handcrafted jewelry collections.</p>
         <a href="collections.html" class="btn btn-light btn-lg">Shop Now</a>
       </div>
-    <div style="position: absolute; top: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to bottom, #0b3d2e, transparent);"></div>
-  </section>
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to bottom, #0b3d2e, transparent);"></div>
+    </section>
   </main>
 
-<footer class="text-center p-3" style="background-color: #0b3d2e; color: white;">    <p>&copy; 2025 Gemmes et Bijoux</p>
+  <footer class="text-center p-3" style="background-color: #0b3d2e; color: white;">
+    <p>&copy; 2025 Gemmes et Bijoux</p>
   </footer>
-<!-- Floating Cart Button -->
 <a href="cart.html" class="btn btn-success rounded-circle" style="position: fixed; bottom: 90px; right: 30px; z-index: 999; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
   <i class="bi bi-bag" style="font-size: 1.5rem;"></i>
 </a>
 
-<!-- Back to Top Button -->
 <button onclick="scrollToTop()" class="btn btn-dark rounded-circle" style="position: fixed; bottom: 20px; right: 30px; z-index: 999; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
   <i class="bi bi-arrow-up" style="font-size: 1.2rem;"></i>
 </button>
