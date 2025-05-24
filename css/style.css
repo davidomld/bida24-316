@@ -532,21 +532,24 @@ footer {
     }
 
     .cart-item-details {
-        flex-direction: column; /* Stack price, quantity, subtotal */
+        flex-direction: column; /* Stack product name, price, quantity, subtotal */
         align-items: flex-start;
         width: 100%; /* Ensure details take full width */
+        margin-top: 10px; /* Space between image and details */
     }
 
     .cart-item-details h4 {
         font-size: 1.1rem;
         text-align: left;
         width: 100%; /* Name always takes full width */
+        margin-bottom: 5px; /* Reduce space below name */
     }
 
     .cart-item-price,
     .cart-item-subtotal {
         flex-basis: 100%; /* Each takes full width on mobile */
         text-align: left; /* Align all text left */
+        font-size: 1rem; /* Smaller font size */
         margin-bottom: 5px; /* Space between details */
     }
 
@@ -557,8 +560,16 @@ footer {
         margin-bottom: 10px; /* Space below controls */
     }
 
+    .quantity-controls button {
+        width: 28px; /* Slightly smaller buttons */
+        height: 28px;
+        font-size: 1rem; /* Smaller font for +/- */
+    }
+
     .quantity-controls input {
-        width: 40px; /* Slightly smaller input for quantity */
+        width: 40px; /* Smaller input for quantity */
+        height: 28px;
+        font-size: 0.9rem; /* Smaller font for quantity value */
     }
 
     .remove-item-btn {
@@ -574,6 +585,14 @@ footer {
         padding: 15px; /* Reduce padding */
     }
 
+    .cart-summary h3 {
+        font-size: 1.5rem; /* Smaller heading */
+    }
+
+    .cart-summary p {
+        font-size: 1.2rem; /* Smaller total price */
+    }
+
     .cart-summary .btn {
         width: 100%; /* Full width buttons */
         margin-bottom: 10px; /* Space between buttons */
@@ -581,5 +600,19 @@ footer {
 
     .cart-summary .btn:last-child {
         margin-bottom: 0;
+    }
+}
+
+/* Added for very small screens if still problematic */
+@media (max-width: 400px) {
+    .cart-item-details h4 {
+        font-size: 1rem; /* Even smaller product name */
+    }
+    .cart-item-price,
+    .cart-item-subtotal {
+        font-size: 0.9rem; /* Even smaller price/subtotal */
+    }
+    .quantity-controls input {
+        width: 35px; /* Even smaller quantity input */
     }
 }
