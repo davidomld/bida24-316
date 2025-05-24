@@ -102,6 +102,27 @@
         font-size: 1rem;
         color: #555;
         font-weight: bold;
+        margin-bottom: 15px; /* Added margin to separate price from button */
+    }
+    .item-grid .item-card .btn {
+        width: 80%; /* Make button fill more width */
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        border-radius: 20px; /* Rounded button */
+        background-color: #0b3d2e; /* Match header color */
+        border-color: #0b3d2e;
+        color: white;
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    }
+    .item-grid .item-card .btn:hover {
+        background-color: #072a1e; /* Darker on hover */
+        border-color: #072a1e;
+    }
+    /* Style for the cart badge */
+    .badge {
+        font-size: 0.75em; /* Slightly smaller for the badge */
+        vertical-align: super; /* Lifts the badge up */
+        margin-left: -5px; /* Pulls badge closer to icon */
     }
   </style>
 </head>
@@ -111,7 +132,7 @@
       <div>
         </div>
       <div>
-        <a href="cart.html"><i class="bi bi-bag"></i></a>
+        <a href="cart.html" id="cart-icon-link"><i class="bi bi-bag"></i> <span id="cart-item-count" class="badge bg-danger rounded-pill">0</span></a>
       </div>
     </div>
     <div class="main-logo">Gemmes et Bijoux</div>
@@ -142,6 +163,11 @@
               <div class="card-body">
                 <h4>Classic Solitaire Ring</h4>
                 <p>$1,890.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="ring-classic-solitaire"
+                        data-product-name="Classic Solitaire Ring"
+                        data-product-price="1890.00"
+                        data-product-image="images/ring1.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -151,6 +177,11 @@
               <div class="card-body">
                 <h4>Vintage Emerald Ring</h4>
                 <p>$2,450.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="ring-vintage-emerald"
+                        data-product-name="Vintage Emerald Ring"
+                        data-product-price="2450.00"
+                        data-product-image="images/ring2.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -160,6 +191,11 @@
               <div class="card-body">
                 <h4>Diamond Pavé Band</h4>
                 <p>$980.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="ring-diamond-pave"
+                        data-product-name="Diamond Pavé Band"
+                        data-product-price="980.00"
+                        data-product-image="images/ring3.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -169,6 +205,11 @@
               <div class="card-body">
                 <h4>Modern Sculptural Ring</h4>
                 <p>$720.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="ring-modern-sculptural"
+                        data-product-name="Modern Sculptural Ring"
+                        data-product-price="720.00"
+                        data-product-image="images/ring4.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -186,6 +227,11 @@
               <div class="card-body">
                 <h4>Elegant Leather Watch</h4>
                 <p>$1,500.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="watch-elegant-leather"
+                        data-product-name="Elegant Leather Watch"
+                        data-product-price="1500.00"
+                        data-product-image="images/watch1.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -195,6 +241,11 @@
               <div class="card-body">
                 <h4>Luxury Chronograph</h4>
                 <p>$3,200.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="watch-luxury-chronograph"
+                        data-product-name="Luxury Chronograph"
+                        data-product-price="3200.00"
+                        data-product-image="images/watch2.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -204,6 +255,11 @@
               <div class="card-body">
                 <h4>Minimalist Dress Watch</h4>
                 <p>$950.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="watch-minimalist-dress"
+                        data-product-name="Minimalist Dress Watch"
+                        data-product-price="950.00"
+                        data-product-image="images/watch3.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -213,6 +269,11 @@
               <div class="card-body">
                 <h4>Sophisticated Dive Watch</h4>
                 <p>$2,100.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="watch-sophisticated-dive"
+                        data-product-name="Sophisticated Dive Watch"
+                        data-product-price="2100.00"
+                        data-product-image="images/watch4.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -230,6 +291,11 @@
               <div class="card-body">
                 <h4>Diamond Solitaire Necklace</h4>
                 <p>$1,100.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="necklace-diamond-solitaire"
+                        data-product-name="Diamond Solitaire Necklace"
+                        data-product-price="1100.00"
+                        data-product-image="images/necklace1.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -239,6 +305,11 @@
               <div class="card-body">
                 <h4>Cultured Pearl Necklace</h4>
                 <p>$580.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="necklace-cultured-pearl"
+                        data-product-name="Cultured Pearl Necklace"
+                        data-product-price="580.00"
+                        data-product-image="images/necklace2.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -248,6 +319,11 @@
               <div class="card-body">
                 <h4>Art Deco Gemstone Necklace</h4>
                 <p>$1,750.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="necklace-art-deco-gemstone"
+                        data-product-name="Art Deco Gemstone Necklace"
+                        data-product-price="1750.00"
+                        data-product-image="images/necklace3.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -257,6 +333,11 @@
               <div class="card-body">
                 <h4>Personalized Engraved Pendant</h4>
                 <p>$450.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="necklace-personalized-engraved"
+                        data-product-name="Personalized Engraved Pendant"
+                        data-product-price="450.00"
+                        data-product-image="images/necklace4.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -274,6 +355,11 @@
               <div class="card-body">
                 <h4>Classic Diamond Studs</h4>
                 <p>$850.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="earring-classic-diamond-studs"
+                        data-product-name="Classic Diamond Studs"
+                        data-product-price="850.00"
+                        data-product-image="images/earring1.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -283,6 +369,11 @@
               <div class="card-body">
                 <h4>Graceful Pearl Drops</h4>
                 <p>$320.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="earring-graceful-pearl-drops"
+                        data-product-name="Graceful Pearl Drops"
+                        data-product-price="320.00"
+                        data-product-image="images/earring2.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -292,6 +383,11 @@
               <div class="card-body">
                 <h4>Modern Gold Hoops</h4>
                 <p>$280.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="earring-modern-gold-hoops"
+                        data-product-name="Modern Gold Hoops"
+                        data-product-price="280.00"
+                        data-product-image="images/earring3.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -301,6 +397,11 @@
               <div class="card-body">
                 <h4>Statement Chandelier Earrings</h4>
                 <p>$620.00</p>
+                <button class="btn btn-primary add-to-cart-btn"
+                        data-product-id="earring-statement-chandelier"
+                        data-product-name="Statement Chandelier Earrings"
+                        data-product-price="620.00"
+                        data-product-image="images/earring4.jpeg">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -316,6 +417,7 @@
 
   <a href="cart.html" class="btn btn-success rounded-circle" style="position: fixed; bottom: 90px; right: 30px; z-index: 999; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
     <i class="bi bi-bag" style="font-size: 1.5rem;"></i>
+    <span id="cart-icon-count-floating" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
   </a>
 
   <button onclick="scrollToTop()" class="btn btn-dark rounded-circle" style="position: fixed; bottom: 20px; right: 30px; z-index: 999; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
@@ -327,5 +429,5 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
-</body>
+  <script src="js/cart.js"></script> </body>
 </html>
