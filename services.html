@@ -7,146 +7,82 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    body {
-      font-family: 'Playfair Display', serif;
-    }
-    .top-bar, .main-menu {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-    }
-    .top-bar a, .main-menu a {
-      color: white;
-      text-decoration: none;
-      margin-right: 20px;
-    }
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 30px;
-      font-size: 0.8rem;
-      /* border-bottom: 1px solid #ddd; */
-    }
-    .main-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.7rem;
-      font-weight: 400;
-      text-align: center;
-      margin: 10px 0;
-    }
-    .main-menu {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 8px 0;
-      /* border-top: 1px solid #ddd; */
-      /* border-bottom: 1px solid #ddd; */
-      font-size: 0.9rem;
-    }
-    .main-menu a {
-      letter-spacing: 1px;
-    }
-    /* Styles for general content pages */
-    .page-section {
-        padding: 60px 0;
-        text-align: center;
-    }
-    .page-section h2 {
-        margin-bottom: 40px;
-        font-size: 2.5rem;
-        color: #0b3d2e;
-    }
-    .service-item {
-        background-color: #f8f9fa;
-        padding: 30px;
-        margin-bottom: 30px;
-        border-radius: 8px;
-        text-align: left;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        transition: transform 0.3s ease-in-out;
-    }
-    .service-item:hover {
-        transform: translateY(-5px);
-    }
-    .service-item h3 {
-        color: #0b3d2e;
-        margin-bottom: 15px;
-        font-size: 1.8rem;
-    }
-    .service-item p {
-        color: #666;
-        line-height: 1.6;
-    }
-     /* Style for the cart badge */
-    .badge {
-        font-size: 0.75em; /* Slightly smaller for the badge */
-        vertical-align: super; /* Lifts the badge up */
-        margin-left: -5px; /* Pulls badge closer to icon */
-    }
-  </style>
-</head>
+  <link rel="stylesheet" href="css/style.css"> </head>
 <body>
-  <header style="background-color: #0b3d2e; color: white;">
+  <header>
     <div class="top-bar">
       <div>
-        </div>
+        <a href="contact.html">Contact Us</a>
+        <a href="services.html">Services</a>
+      </div>
       <div>
         <a href="cart.html" id="cart-icon-link"><i class="bi bi-bag"></i> <span id="cart-item-count" class="badge bg-danger rounded-pill">0</span></a>
       </div>
     </div>
     <div class="main-logo">Gemmes et Bijoux</div>
-    <nav class="main-menu">
-      <a href="index.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="services.html">Services</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="contact.html">Contact Us</a>
+    <nav class="main-menu navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
   </header>
 
   <main>
-    <section class="page-section">
+    <section class="page-section bg-light">
       <div class="container">
-        <h2>Our Comprehensive Jewelry Services</h2>
-        <p class="lead mb-5">At Gemmes et Bijoux, our commitment to excellence extends beyond our exquisite collections. We offer a full spectrum of professional services to preserve the beauty and value of your precious jewelry.</p>
+        <h2>Our Services</h2>
+        <p class="lead mb-5">At Gemmes et Bijoux, we offer a comprehensive range of services to meet all your jewelry needs, from custom design to meticulous repair.</p>
+      </div>
+    </section>
 
+    <section class="services-content">
+      <div class="container">
         <div class="row">
           <div class="col-md-6 col-lg-4">
             <div class="service-item">
-              <h3>Custom Jewelry Design</h3>
-              <p>Collaborate with our master jewelers to transform your unique vision into a tangible masterpiece. From initial sketches to the final polish, we guide you through every step of creating a bespoke piece that tells your story.</p>
+              <h3>Custom Design</h3>
+              <p>Bring your unique vision to life. Our skilled designers work with you to create personalized jewelry, from engagement rings to custom pendants, ensuring every detail is perfect.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
             <div class="service-item">
-              <h3>Expert Jewelry Repair & Restoration</h3>
-              <p>Trust your cherished heirlooms and everyday favorites to our skilled artisans. We specialize in intricate repairs, gemstone resetting, clasp replacements, and full historical restorations, ensuring your pieces return to their original splendor.</p>
+              <h3>Jewelry Repair & Restoration</h3>
+              <p>Trust your cherished pieces to our expert artisans. We offer comprehensive repair, resizing, and restoration services to bring your jewelry back to its original beauty.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
             <div class="service-item">
-              <h3>Professional Cleaning & Maintenance</h3>
-              <p>Restore the brilliant sparkle to your jewelry with our meticulous cleaning services. We also provide thorough inspections to identify any potential issues early, helping to prevent future damage and ensure longevity.</p>
+              <h3>Appraisals & Certification</h3>
+              <p>Obtain professional appraisals and certifications for your diamonds and gemstones. Our certified gemologists provide accurate valuations for insurance or resale purposes.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
             <div class="service-item">
-              <h3>Certified Appraisals & Valuations</h3>
-              <p>Obtain accurate and legally recognized appraisals for insurance purposes, estate planning, or resale. Our certified gemologists conduct detailed examinations and provide comprehensive documentation for your valuable assets.</p>
+              <h3>Cleaning & Polishing</h3>
+              <p>Restore the sparkle and brilliance of your jewelry with our professional cleaning and polishing services, ensuring your pieces always look their best.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
             <div class="service-item">
-              <h3>Personalized Engraving Services</h3>
-              <p>Add a deeply personal touch to your jewelry with our precision engraving services. Commemorate special dates, initials, or meaningful messages, making your gift truly unforgettable and unique.</p>
+              <h3>Engraving</h3>
+              <p>Add a personal touch to your jewelry with our precision engraving services. Perfect for special dates, names, or meaningful messages.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
             <div class="service-item">
-              <h3>Ethical Gemstone Sourcing</h3>
-              <p>Whether for a new design or a replacement, we offer expert sourcing of high-quality, ethically obtained gemstones from around the world. We commit to transparency and responsible practices in all our material acquisitions.</p>
+              <h3>Gemstone Sourcing</h3>
+              <p>Looking for a specific gemstone? We specialize in ethically sourcing rare and high-quality diamonds and colored gemstones from around the world.</p>
             </div>
           </div>
         </div>
@@ -154,7 +90,7 @@
     </section>
   </main>
 
-  <footer class="text-center p-3" style="background-color: #0b3d2e; color: white;">
+  <footer>
     <p>© 2025 Gemmes et Bijoux</p>
   </footer>
 
@@ -172,5 +108,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVpZVoxcPN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5ZaEw/RgsHhQ" crossorigin="anonymous"></script>
   <script src="js/cart.js"></script> </body>
 </html>
