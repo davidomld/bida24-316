@@ -1,0 +1,28 @@
+/* Ensure content fills the screen on smaller devices */
+@media (max-width: 767.98px) { /* Adjust breakpoint as needed */
+  .page-section,
+  .about-section,
+  .featured-section,
+  .process-section,
+  .collection-type-section,
+  .cart-items-section {
+    padding-left: 15px; /* Reduce left and right padding */
+    padding-right: 15px;
+  }
+
+  .container {
+    width: 100%; /* Make container full-width */
+    max-width: 100%; /* Override Bootstrap's default max-width */
+    padding-left: 0; /* Remove default padding */
+    padding-right: 0;
+  }
+
+  .item-grid .item-card {
+    width: 100%; /* Each item card takes full width */
+  }
+
+  /* Adjustments for the cart page */
+  .cart-items-section .table {
+    width: 100%;
+  }
+}
