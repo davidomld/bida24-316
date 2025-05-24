@@ -6,10 +6,34 @@ body {
     padding: 0; /* Ensure no default body padding */
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: #0b3d2e; /* Using your dark green for headings */
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /* Header and Navigation */
 header {
-    background-color: #0b3d2e;
+    background-color: #0b3d2e; /* Your dark green */
     color: white;
+    padding: 10px 0; /* Adjusted padding to match earlier general header style */
+    text-align: center;
 }
 
 .top-bar {
@@ -19,12 +43,17 @@ header {
     font-size: 0.8rem;
     font-family: 'Playfair Display', serif;
     text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Added back a subtle separator */
 }
 
 .top-bar a {
     color: white;
     text-decoration: none;
     margin-right: 20px;
+}
+
+.top-bar a:hover {
+    color: #d4af37; /* Gold on hover - consistent with previous suggestion */
 }
 
 .main-logo {
@@ -39,7 +68,6 @@ header {
 .main-menu.navbar {
     padding: 8px 0; /* Keep the padding for the nav container */
     font-size: 0.9rem;
-    /* Ensure Bootstrap's styling takes over for display/justify/gap */
 }
 
 .main-menu .navbar-nav .nav-item {
@@ -54,12 +82,22 @@ header {
     text-transform: uppercase;
 }
 
+.main-menu .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.main-menu .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 /* Footer */
 footer {
     text-align: center;
     padding: 30px 0;
-    background-color: #0b3d2e;
+    background-color: #0b3d2e; /* Your dark green */
     color: white;
+    position: relative; /* Ensure it stays at the bottom */
+    bottom: 0;
+    width: 100%;
 }
 
 /* Hero Section (from index.html) */
@@ -93,6 +131,7 @@ footer {
     font-size: 4.5rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: white; /* Ensure hero heading is white */
 }
 
 .hero-content p {
@@ -160,7 +199,7 @@ footer {
 }
 
 .featured-section .card img {
-    height: 200px;
+    height: 300px;
     object-fit: cover;
 }
 
@@ -202,27 +241,38 @@ footer {
 
 /* Collections Page Specific */
 .collection-type-section {
-    padding: 40px 0;
+    padding: 60px 0; /* Consistent with previous .page-section */
     text-align: center;
 }
 
 .collection-type-section h3 {
-    margin-bottom: 30px;
+    margin-bottom: 3rem; /* Consistent with previous suggestions */
     font-size: 2rem;
     color: #0b3d2e;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    display: inline-block;
+    border-bottom: none; /* Remove border-bottom from h3 if not intended */
+    padding-bottom: 0;
+    display: block; /* Ensure it takes full width if needed */
+}
+
+.item-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items on larger screens if not full row */
 }
 
 .item-grid .item-card {
-    margin-bottom: 30px;
+    margin: 15px; /* Adjust margin for spacing between cards */
     text-align: center;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     overflow: hidden;
+    width: 100%; /* Default to full width on very small screens */
+    max-width: 300px; /* Max width for individual cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push button to bottom */
 }
 
 .item-grid .item-card:hover {
@@ -232,8 +282,8 @@ footer {
 
 .item-grid .item-card img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: 220px; /* IMPORTANT: Ensures consistent height for all collection images */
+    object-fit: cover; /* IMPORTANT: Ensures images fill the space without distortion */
     border-bottom: 1px solid #eee;
 }
 
@@ -379,68 +429,116 @@ footer {
     color: #0b3d2e;
 }
 
-.cart-table img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.cart-table .product-name {
-    font-weight: bold;
-    color: #0b3d2e;
-}
-
-.cart-table .quantity-controls {
+/* Using flexbox for cart item layout for better responsiveness */
+.cart-item {
     display: flex;
     align-items: center;
-    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative; /* For absolute positioning of remove button */
 }
 
-.cart-table .quantity-controls .btn {
+.cart-item img {
+    width: 100px; /* Larger image on desktop */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap; /* Allow details to wrap on smaller screens */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-item-details h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #0b3d2e;
+    flex-basis: 100%; /* Product name takes full width initially */
+    margin-bottom: 10px; /* Space below name */
+}
+
+.cart-item-price,
+.cart-item-subtotal {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #555;
+    flex-basis: 50%; /* Price and subtotal share width initially */
+    text-align: left; /* Default alignment */
+}
+
+.cart-item-subtotal {
+    text-align: right; /* Subtotal aligns right */
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    flex-basis: 100%; /* Quantity controls take full width below price/subtotal */
+    justify-content: flex-start; /* Align left on larger screens */
+    margin-top: 10px; /* Space above controls */
+}
+
+.quantity-controls button {
     width: 30px;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
     font-size: 1.2rem;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
-    color: #333;
     border-radius: 4px;
+    color: #333;
+    transition: background-color 0.2s;
 }
 
-.cart-table .quantity-controls .btn:hover {
-    background-color: #dee2e6;
+.quantity-controls button:hover {
+    background-color: #e0e0e0;
 }
 
-.cart-table .quantity-controls .quantity-input {
-    width: 60px;
+.quantity-controls input {
+    width: 50px; /* Adjusted width for quantity input */
     text-align: center;
+    border: 1px solid #ccc;
     margin: 0 5px;
     height: 30px;
-    padding: 0 5px;
-    border: 1px solid #ced4da;
     border-radius: 4px;
-    -moz-appearance: textfield;
 }
 
-.cart-table .quantity-controls .quantity-input::-webkit-outer-spin-button,
-.cart-table .quantity-controls .quantity-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.cart-table .remove-item-btn {
-    color: #dc3545;
-    font-size: 1.3rem;
+.remove-item-btn {
     background: none;
     border: none;
-    padding: 0;
+    color: #dc3545; /* Red color for remove */
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 15px; /* Space from quantity controls */
+    flex-shrink: 0; /* Prevent button from shrinking */
+    position: absolute; /* Position absolutely to break it out of flex flow */
+    top: 15px;
+    right: 15px;
 }
 
-.cart-table .remove-item-btn:hover {
+.remove-item-btn:hover {
     color: #c82333;
+}
+
+
+.empty-cart-message {
+    font-size: 1.5rem;
+    color: #6c757d;
+    margin-top: 50px;
+    text-align: center;
 }
 
 .cart-summary {
@@ -464,31 +562,25 @@ footer {
     margin-bottom: 20px;
 }
 
-.cart-summary .btn-primary {
+.cart-summary .btn {
     background-color: #0b3d2e;
     border-color: #0b3d2e;
     padding: 12px 30px;
     font-size: 1.1rem;
     border-radius: 30px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
-.cart-summary .btn-primary:hover {
+.cart-summary .btn:hover {
     background-color: #072a1e;
     border-color: #072a1e;
-}
-
-.empty-cart-message {
-    font-size: 1.5rem;
-    color: #6c757d;
-    margin-top: 50px;
-    text-align: center;
 }
 
 
 /* Floating Buttons (Cart & Scroll-to-Top) */
 .btn-success.rounded-circle { /* For floating cart */
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #28a745 !important; /* Use !important to override Bootstrap if needed */
+    border-color: #28a745 !important;
     width: 60px;
     height: 60px;
     font-size: 1.5rem;
@@ -501,13 +593,13 @@ footer {
     justify-content: center;
 }
 .btn-success.rounded-circle:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
 }
 
 .btn-dark.rounded-circle { /* For scroll to top */
-    background-color: #343a40;
-    border-color: #343a40;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
@@ -520,10 +612,9 @@ footer {
     justify-content: center;
 }
 .btn-dark.rounded-circle:hover {
-    background-color: #23272b;
-    border-color: #1d2124;
+    background-color: #23272b !important;
+    border-color: #1d2124 !important;
 }
-
 
 /* Cart Badge Styling */
 .badge {
@@ -572,57 +663,97 @@ footer {
         padding-right: 0;
     }
 
+    /* Specific adjustments for item-grid on smaller screens if still needed */
     .item-grid .item-card {
-        width: 100%; /* Each item card takes full width */
+        max-width: 100%; /* Allow cards to take full width */
+        margin-left: 0;
+        margin-right: 0;
     }
 
-    /* Adjustments for the cart page */
-    .cart-table {
-        width: 100%;
-        font-size: 0.9rem; /* Smaller font for table content on mobile */
+
+    /* Adjustments for the cart page on mobile */
+    .cart-item {
+        flex-direction: column; /* Stack image and details vertically */
+        align-items: flex-start; /* Align contents to the left */
+        padding: 10px; /* Reduce padding */
     }
 
-    .cart-table th, .cart-table td {
-        padding: 8px; /* Reduce padding for table cells */
-        vertical-align: middle;
+    .cart-item img {
+        margin-right: 0;
+        margin-bottom: 10px; /* Space below image */
+        width: 80px; /* Smaller image on mobile */
+        height: 80px;
     }
 
-    .cart-table img {
-        width: 60px; /* Smaller image on mobile */
-        height: 60px;
+    .cart-item-details {
+        flex-direction: column; /* Stack product name, price, quantity, subtotal */
+        align-items: flex-start; /* Align text left */
+        width: 100%; /* Ensure details take full width */
+        margin-top: 10px; /* Space between image and details */
     }
 
-    .cart-table .quantity-controls .btn {
-        width: 25px;
-        height: 25px;
-        font-size: 1rem;
-    }
-
-    .cart-table .quantity-controls .quantity-input {
-        width: 45px;
-        height: 25px;
-        font-size: 0.9rem;
-    }
-
-    .cart-table .remove-item-btn {
+    .cart-item-details h4 {
         font-size: 1.1rem;
+        text-align: left;
+        width: 100%; /* Name always takes full width */
+        margin-bottom: 5px; /* Reduce space below name */
+    }
+
+    .cart-item-price,
+    .cart-item-subtotal {
+        flex-basis: 100%; /* Each takes full width on mobile */
+        text-align: left; /* Align all text left */
+        font-size: 1rem; /* Smaller font size */
+        margin-bottom: 5px; /* Space between details */
+    }
+
+    .quantity-controls {
+        justify-content: flex-start; /* Align quantity controls to the left */
+        width: 100%; /* Ensure full width */
+        margin-top: 10px; /* Space above controls */
+        margin-bottom: 10px; /* Space below controls */
+    }
+
+    .quantity-controls button {
+        width: 28px; /* Slightly smaller buttons */
+        height: 28px;
+        font-size: 1rem; /* Smaller font for +/- */
+    }
+
+    .quantity-controls input {
+        width: 40px; /* Smaller input for quantity */
+        height: 28px;
+        font-size: 0.9rem; /* Smaller font for quantity value */
+    }
+
+    .remove-item-btn {
+        position: absolute; /* Position remove button absolutely */
+        top: 10px;
+        right: 10px;
+        margin-left: 0;
+        font-size: 1.2rem; /* Smaller icon */
     }
 
     .cart-summary {
         padding: 20px;
+        text-align: center; /* Center summary on mobile */
     }
 
     .cart-summary h3 {
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* Smaller heading */
     }
 
     .cart-summary p {
-        font-size: 1.1rem;
+        font-size: 1.2rem; /* Smaller total price */
     }
 
-    .cart-summary .btn-primary {
-        padding: 10px 20px;
-        font-size: 1rem;
+    .cart-summary .btn {
+        width: 100%; /* Full width buttons */
+        margin-bottom: 10px; /* Space between buttons */
+    }
+
+    .cart-summary .btn:last-child {
+        margin-bottom: 0;
     }
 
     .hero-content h1 {
@@ -631,5 +762,19 @@ footer {
 
     .hero-content p {
         font-size: 1.2rem;
+    }
+}
+
+/* Added for very small screens if still problematic */
+@media (max-width: 400px) {
+    .cart-item-details h4 {
+        font-size: 1rem; /* Even smaller product name */
+    }
+    .cart-item-price,
+    .cart-item-subtotal {
+        font-size: 0.9rem; /* Even smaller price/subtotal */
+    }
+    .quantity-controls input {
+        width: 35px; /* Even smaller quantity input */
     }
 }
