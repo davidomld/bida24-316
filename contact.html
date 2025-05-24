@@ -7,163 +7,82 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    body {
-      font-family: 'Playfair Display', serif;
-    }
-    .top-bar, .main-menu {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-    }
-    .top-bar a, .main-menu a {
-      color: white;
-      text-decoration: none;
-      margin-right: 20px;
-    }
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 30px;
-      font-size: 0.8rem;
-      /* border-bottom: 1px solid #ddd; */
-    }
-    .main-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.7rem;
-      font-weight: 400;
-      text-align: center;
-      margin: 10px 0;
-    }
-    .main-menu {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 8px 0;
-      /* border-top: 1px solid #ddd; */
-      /* border-bottom: 1px solid #ddd; */
-      font-size: 0.9rem;
-    }
-    .main-menu a {
-      letter-spacing: 1px;
-    }
-    /* Styles for general content pages */
-    .page-section {
-        padding: 60px 0;
-        text-align: center;
-    }
-    .page-section h2 {
-        margin-bottom: 40px;
-        font-size: 2.5rem;
-        color: #0b3d2e;
-    }
-    .contact-info {
-        margin-bottom: 40px;
-        text-align: left;
-    }
-    .contact-info p {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        color: #333;
-    }
-    .contact-info i {
-        margin-right: 10px;
-        color: #0b3d2e;
-        font-size: 1.3rem;
-    }
-    .contact-form {
-        max-width: 600px; /* Kept max-width for consistency */
-        margin: 0 auto; /* Center the form if it's the only main content */
-        padding: 30px;
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        text-align: left;
-    }
-    .contact-form .form-label {
-        font-weight: bold;
-        color: #0b3d2e;
-    }
-    .contact-form .btn {
-        background-color: #0b3d2e;
-        border-color: #0b3d2e;
-        font-weight: bold;
-        padding: 10px 30px;
-    }
-    .contact-form .btn:hover {
-        background-color: #072a1e;
-        border-color: #072a1e;
-    }
-     /* Style for the cart badge */
-    .badge {
-        font-size: 0.75em; /* Slightly smaller for the badge */
-        vertical-align: super; /* Lifts the badge up */
-        margin-left: -5px; /* Pulls badge closer to icon */
-    }
-  </style>
-</head>
+  <link rel="stylesheet" href="css/style.css"> </head>
 <body>
-  <header style="background-color: #0b3d2e; color: white;">
+  <header>
     <div class="top-bar">
-      <div>
-        </div>
       <div>
         <a href="cart.html" id="cart-icon-link"><i class="bi bi-bag"></i> <span id="cart-item-count" class="badge bg-danger rounded-pill">0</span></a>
       </div>
     </div>
     <div class="main-logo">Gemmes et Bijoux</div>
-    <nav class="main-menu">
-      <a href="index.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="services.html">Services</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="contact.html">Contact Us</a>
+    <nav class="main-menu navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
   </header>
 
   <main>
-    <section class="page-section">
+    <section class="page-section bg-light">
       <div class="container">
         <h2>Contact Us</h2>
-        <p class="lead mb-5">We'd love to hear from you! Reach out to us with any inquiries, custom requests, or feedback.</p>
+        <p class="lead mb-5">We'd love to hear from you! Reach out to us for inquiries, custom orders, or any questions you may have.</p>
+      </div>
+    </section>
 
-        <div class="row justify-content-center"> <div class="col-lg-8"> <div class="contact-info">
-              <h3>Our Showroom</h3>
-              <p><i class="bi bi-geo-alt-fill"></i> 123 Luxury Lane, Jewelry City, JC 12345</p>
+    <section class="contact-details">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="contact-info">
+              <p><i class="bi bi-geo-alt-fill"></i> 123 Gemstone Alley, Jewel City, JC 12345</p>
               <p><i class="bi bi-telephone-fill"></i> +1 (555) 123-4567</p>
               <p><i class="bi bi-envelope-fill"></i> info@gemmesetbijoux.com</p>
               <p><i class="bi bi-clock-fill"></i> Mon-Sat: 10:00 AM - 6:00 PM</p>
-            </div>
-            <div class="contact-form">
-              <h3>Send Us a Message</h3>
-              <form>
-                <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" required>
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="mb-3">
-                  <label for="subject" class="form-label">Subject</label>
-                  <input type="text" class="form-control" id="subject">
-                </div>
-                <div class="mb-3">
-                  <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control" id="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="contact-form-section">
+      <div class="container">
+        <form class="contact-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer class="text-center p-3" style="background-color: #0b3d2e; color: white;">
+  <footer>
     <p>© 2025 Gemmes et Bijoux</p>
   </footer>
 
@@ -181,5 +100,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVpZVoxcPN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5ZaEw/RgsHhQ" crossorigin="anonymous"></script>
   <script src="js/cart.js"></script> </body>
 </html>
