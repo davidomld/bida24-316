@@ -46,8 +46,7 @@ function addToCart(product) {
     }
     saveCart();
     updateCartIcon();
-    // Optional: Provide user feedback (e.g., a small temporary message)
-    console.log(`${product.name} added to cart! Current cart:`, cart); // Added console log for debugging
+    console.log(`${product.name} added to cart! Current cart:`, cart);
 }
 
 /**
@@ -63,13 +62,13 @@ function updateCartItemQuantity(productId, newQuantity) {
         } else {
             // If newQuantity is 0 or less, remove the item
             removeFromCart(productId);
-            return; // Exit to avoid re-rendering twice
+            return;
         }
     }
     saveCart();
     updateCartIcon();
     renderCart(); // Re-render cart on cart.html page
-    console.log(`Quantity for ${productId} updated to ${newQuantity}. Current cart:`, cart); // Added console log
+    console.log(`Quantity for ${productId} updated to ${newQuantity}. Current cart:`, cart);
 }
 
 /**
@@ -81,7 +80,7 @@ function removeFromCart(productId) {
     saveCart();
     updateCartIcon();
     renderCart(); // Re-render cart on cart.html page
-    console.log(`${productId} removed. Current cart:`, cart); // Added console log
+    console.log(`${productId} removed. Current cart:`, cart);
 }
 
 /**
@@ -118,7 +117,7 @@ function updateCartIcon() {
             }
         }
     });
-    console.log(`Cart icon updated. Item count: ${count}`); // Added console log
+    console.log(`Cart icon updated. Item count: ${count}`);
 }
 
 // --- Cart Page Rendering (for cart.html) ---
@@ -139,11 +138,13 @@ function renderCart() {
         cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty. Start shopping!</p>';
         cartTotalElement.textContent = '0.00';
         document.getElementById('checkout-btn').disabled = true;
-        console.log("Cart is empty. Displaying empty cart message."); // Added console log
+        document.getElementById('continue-shopping-btn').disabled = false; // Ensure continue shopping is enabled
+        console.log("Cart is empty. Displaying empty cart message.");
         return;
     }
 
-    document.getElementById('checkout-btn').disabled = false; // Enable checkout button
+    document.getElementById('checkout-btn').disabled = false;
+    document.getElementById('continue-shopping-btn').disabled = false;
 
     let cartTableHTML = `
         <table class="table cart-table">
@@ -228,20 +229,19 @@ function renderCart() {
             removeFromCart(productId);
         });
     });
-    console.log("Cart rendered. Current cart items:", cart); // Added console log
+    console.log("Cart rendered. Current cart items:", cart);
 }
 
 // --- Event Listeners and Initial Load ---
 
-// Event listener for "Add to Cart" buttons on collections.html
 document.addEventListener('DOMContentLoaded', () => {
     loadCart(); // Load cart when any page loads
     updateCartIcon(); // Update cart icon on any page load
 
-    // Only add listeners for "Add to Cart" if on collections page
+    // Attach listeners for "Add to Cart" buttons if present on the page
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
     if (addToCartButtons.length > 0) {
-        console.log(`Found ${addToCartButtons.length} "Add to Cart" buttons. Attaching listeners.`); // Added console log
+        console.log(`Found ${addToCartButtons.length} "Add to Cart" buttons. Attaching listeners.`);
         addToCartButtons.forEach(button => {
             button.addEventListener('click', (event) => {
                 const product = {
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     } else {
-        console.log("No 'Add to Cart' buttons found on this page."); // Added console log
+        console.log("No 'Add to Cart' buttons found on this page.");
     }
 
     // Only render cart if on cart.html page
@@ -262,12 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCart();
     }
 
-    // Placeholder for checkout button functionality
+    // Checkout button functionality
     const checkoutBtn = document.getElementById('checkout-btn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
-            // In a real application, this would lead to a checkout process
-            // For now, we'll just clear the cart and give a message.
             if (cart.length > 0) {
                 cart = []; // Clear the cart
                 saveCart();
@@ -277,6 +275,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert("Your cart is empty. Please add items before checking out.");
             }
+        });
+    }
+
+    // Continue Shopping button functionality
+    const continueShoppingBtn = document.getElementById('continue-shopping-btn');
+    if (continueShoppingBtn) {
+        continueShoppingBtn.addEventListener('click', () => {
+            window.location.href = 'collections.html'; // Redirect to collections page
         });
     }
 });
