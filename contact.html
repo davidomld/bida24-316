@@ -7,7 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/style.css"> <link rel="icon" href="favicon.ico" type="image/x-icon"> </head>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
 <body>
   <header>
     <div class="top-bar">
@@ -22,68 +24,64 @@
     <div class="main-logo">Gemmes et Bijoux</div>
     <nav class="main-menu navbar navbar-expand-lg navbar-dark bg-transparent">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
         </div>
     </nav>
   </header>
 
-  <main>
-    <section class="page-section bg-light">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <p class="lead mb-5">We'd love to hear from you! Reach out to us for inquiries, custom orders, or any questions you may have.</p>
-      </div>
-    </section>
+  <main class="page-section">
+    <div class="container">
+      <h2>Get in Touch with Us</h2>
+      <p class="lead text-center">We're here to assist you with any inquiries regarding our exquisite jewelry and services.</p>
 
-    <section class="contact-details">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-6 col-lg-4">
-            <div class="contact-info">
-              <p><i class="bi bi-geo-alt-fill"></i> 123 Gemstone Alley, Jewel City, JC 12345</p>
-              <p><i class="bi bi-telephone-fill"></i> +1 (555) 123-4567</p>
-              <p><i class="bi bi-envelope-fill"></i> info@gemmesetbijoux.com</p>
-              <p><i class="bi bi-clock-fill"></i> Mon-Sat: 10:00 AM - 6:00 PM</p>
-            </div>
+      <div class="row mt-5">
+        <div class="col-md-6 mb-4">
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><i class="bi bi-geo-alt-fill"></i> 123 Luxury Lane, Jewel City, JC 10001, USA</p>
+            <p><i class="bi bi-telephone-fill"></i> +1 (555) 123-4567</p>
+            <p><i class="bi bi-envelope-fill"></i> info@gemmesetbijoux.com</p>
+            <p><i class="bi bi-clock-fill"></i> Mon-Fri: 9:00 AM - 6:00 PM (EST)</p>
+            <p><i class="bi bi-clock-fill"></i> Sat: 10:00 AM - 4:00 PM (EST)</p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="contact-form">
+            <h3>Send Us a Message</h3>
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject">
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="contact-form-section">
-      <div class="container">
-        <form class="contact-form">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" required>
-          </div>
-          <div class="mb-3">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control" id="subject">
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
-    </section>
+    </div>
   </main>
 
   <footer>
@@ -106,5 +104,6 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-  <script src="js/cart.js"></script> </body>
+  <script src="js/cart.js"></script>
+</body>
 </html>
