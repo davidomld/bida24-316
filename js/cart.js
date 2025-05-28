@@ -136,9 +136,9 @@ function renderCart() {
     }
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = ''; // Clear items
-        emptyCartMessage.classList.remove('d-none'); // Show empty message
-        cartSummaryContainer.classList.add('d-none');   // Hide summary container and buttons
+        cartItemsContainer.innerHTML = '';
+        emptyCartMessage.classList.remove('d-none');
+        cartSummaryContainer.classList.add('d-none');   
 
         cartTotalElement.textContent = '0.00';
         document.getElementById('checkout-btn').disabled = true;
@@ -147,9 +147,8 @@ function renderCart() {
         return;
     }
 
-    // If cart is NOT empty:
-    emptyCartMessage.classList.add('d-none');       // Hide empty message
-    cartSummaryContainer.classList.remove('d-none'); // Show summary container and buttons
+    emptyCartMessage.classList.add('d-none');       
+    cartSummaryContainer.classList.remove('d-none'); 
 
     document.getElementById('checkout-btn').disabled = false;
     document.getElementById('continue-shopping-btn').disabled = false;
@@ -172,8 +171,7 @@ function renderCart() {
         const subtotal = (item.price * item.quantity).toFixed(2);
         cartTableHTML += `
             <tr>
-                <td class="d-flex align-items-center">
-                    <img src="${item.image}" alt="${item.name}" class="me-3">
+                <td>
                     <span class="product-name">${item.name}</span>
                 </td>
                 <td>$${parseFloat(item.price).toFixed(2)}</td>
@@ -275,8 +273,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length > 0) {
-                // >>> MODIFIED HERE: Redirect directly, remove alert and immediate cart clear <<<
-                window.location.href = 'checkout.html';
+                cart = []; // Clear the cart
+                saveCart();
+                updateCartIcon();
+                renderCart(); // Re-render to show empty cart message
+                alert("Proceeding to checkout! (Cart has been cleared for this demo.)");
             } else {
                 alert("Your cart is empty. Please add items before checking out.");
             }
