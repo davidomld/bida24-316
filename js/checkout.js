@@ -1,99 +1,117 @@
 // js/checkout.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    const orderSummaryList = document.getElementById('checkout-order-summary-list');
-    const orderTotalElement = document.getElementById('checkout-order-total');
-    const cartItemCountElement = document.getElementById('checkout-cart-item-count');
+    // We need to load the cart again specifically for the checkout page
+    // The loadCart() function from cart.js should already be available globally
+    loadCart(); // This populates the 'cart' array
+
+    const checkoutCartItemCount = document.getElementById('checkout-cart-item-count');
+    const checkoutOrderSummaryList = document.getElementById('checkout-order-summary-list');
+    const checkoutOrderTotal = document.getElementById('checkout-order-total');
     const placeOrderBtn = document.getElementById('place-order-btn');
+    const checkoutForm = document.querySelector('.needs-validation'); // Get the form
 
-    // Function to load and display cart items on the checkout page
-    function displayOrderSummary() {
-        const cartItems = JSON.parse(localStorage.getItem('gemmesEtBijouxCart')) || [];
-        orderSummaryList.innerHTML = ''; // Clear existing items
+    /**
+     * Renders the order summary in the checkout page's sidebar.
+     */
+    function renderOrderSummary() {
+        if (!checkoutOrderSummaryList || !checkoutOrderTotal || !checkoutCartItemCount) {
+            console.warn("Checkout summary elements not found. Skipping order summary rendering.");
+            return;
+        }
 
-        let total = 0;
-        let totalCount = 0;
+        checkoutCartItemCount.textContent = getCartItemCount();
+        checkoutOrderTotal.textContent = `$${getCartTotal().toFixed(2)}`;
 
-        if (cartItems.length === 0) {
-            orderSummaryList.innerHTML = `
-                <li class="list-group-item d-flex justify-content-between align-items-center text-muted">
-                    Your cart is empty.
-                </li>
-            `;
-            if (placeOrderBtn) { // Check if button exists before disabling
-                placeOrderBtn.disabled = true; // Disable order button if cart is empty
+        checkoutOrderSummaryList.innerHTML = ''; // Clear previous items
+
+        if (cart.length === 0) {
+            const emptyMessage = document.createElement('li');
+            emptyMessage.className = 'list-group-item text-muted';
+            emptyMessage.textContent = 'Your cart is empty.';
+            checkoutOrderSummaryList.appendChild(emptyMessage);
+            // Disable place order button if cart is empty
+            if (placeOrderBtn) {
+                placeOrderBtn.disabled = true;
+                placeOrderBtn.textContent = 'Cart is Empty';
             }
         } else {
-            cartItems.forEach(item => {
-                const subtotal = (item.price * item.quantity).toFixed(2);
-                const listItem = document.createElement('li');
-                listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
-                listItem.innerHTML = `
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between lh-sm';
+                li.innerHTML = `
                     <div>
                         <h6 class="my-0">${item.name}</h6>
                         <small class="text-muted">Quantity: ${item.quantity}</small>
                     </div>
-                    <span class="text-muted">$${subtotal}</span>
+                    <span class="text-muted">$${(item.price * item.quantity).toFixed(2)}</span>
                 `;
-                orderSummaryList.appendChild(listItem);
-                total += item.price * item.quantity;
-                totalCount += item.quantity;
+                checkoutOrderSummaryList.appendChild(li);
             });
-            if (placeOrderBtn) { // Check if button exists before enabling
-                placeOrderBtn.disabled = false; // Enable order button
+
+            // Add the total row back after the items
+            const totalLi = document.createElement('li');
+            totalLi.className = 'list-group-item d-flex justify-content-between';
+            totalLi.innerHTML = `
+                <span>Total (USD)</span>
+                <strong id="checkout-order-total">$${getCartTotal().toFixed(2)}</strong>
+            `;
+            checkoutOrderSummaryList.appendChild(totalLi);
+
+            // Re-enable place order button if cart has items
+            if (placeOrderBtn) {
+                placeOrderBtn.disabled = false;
+                placeOrderBtn.textContent = 'Place Order';
             }
         }
-
-        // Add the total item to the end of the list
-        // Only append total if cart is not empty or if you want to show 0.00
-        // (the current logic adds it even for empty, which is fine)
-        const totalListItem = document.createElement('li');
-        totalListItem.classList.add('list-group-item', 'd-flex', 'justify-content-between');
-        totalListItem.innerHTML = `
-            <span>Total (USD)</span>
-            <strong>$${total.toFixed(2)}</strong>
-        `;
-        orderSummaryList.appendChild(totalListItem);
-
-
-        orderTotalElement.textContent = `$${total.toFixed(2)}`;
-        cartItemCountElement.textContent = totalCount;
     }
 
-    // Handle Place Order button click
-    if (placeOrderBtn) {
-        placeOrderBtn.addEventListener('click', (event) => {
-            // Prevent default form submission for now (we're not sending to a server)
-            event.preventDefault();
+    // Call renderOrderSummary when the page loads
+    renderOrderSummary();
 
-            const form = document.querySelector('.needs-validation');
-            if (form) { // Ensure form exists
-              if (!form.checkValidity()) {
-                form.classList.add('was-validated');
+    // --- Place Order Button / Form Submission Logic ---
+    if (checkoutForm && placeOrderBtn) {
+        checkoutForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Bootstrap's validation check
+            if (!checkoutForm.checkValidity()) {
+                event.stopPropagation();
+                checkoutForm.classList.add('was-validated');
+                console.log("Form validation failed.");
                 return; // Stop if form is not valid
-              }
             }
 
+            // --- Simulate Payment Processing ---
+            // In a real application, you would send data to a backend here
+            // and await a response from a payment gateway.
+            console.log("Form is valid. Simulating order placement...");
 
-            // In a real application, you would collect form data here
-            // and send it to a backend server for processing payment and order fulfillment.
+            // Disable button to prevent multiple submissions
+            placeOrderBtn.disabled = true;
+            placeOrderBtn.textContent = 'Processing...';
 
-            alert('Order Placed Successfully! (This is a demo. No real payment processed.)');
+            // Simulate a delay for payment processing
+            setTimeout(() => {
+                // Check if cart is still not empty (shouldn't be if form was valid)
+                if (cart.length > 0) {
+                    // --- Payment Success Simulation ---
+                    alert("Order placed successfully! Redirecting to confirmation page.");
 
-            // Clear the cart after a successful "order"
-            localStorage.removeItem('gemmesEtBijouxCart');
+                    // Clear the cart after successful order
+                    cart = [];
+                    saveCart(); // Save the empty cart to localStorage
+                    updateCartIcon(); // Update cart icon across site
 
-            // Redirect to a confirmation page or home page
-            window.location.href = 'index.html'; // Or 'order-confirmation.html'
+                    // Redirect to payment success page
+                    window.location.href = 'payment-success.html';
+                } else {
+                    alert("Your cart is empty. Please add items before checking out.");
+                    placeOrderBtn.disabled = false; // Re-enable button
+                    placeOrderBtn.textContent = 'Place Order';
+                    renderOrderSummary(); // Re-render summary
+                }
+            }, 2000); // Simulate 2-second processing time
         });
-    }
-
-    // Initial display of order summary when page loads
-    displayOrderSummary();
-
-    // Call updateCartIcon from cart.js (if cart.js is loaded) to update the floating icon
-    // This assumes cart.js is loaded after checkout.js or globally
-    if (typeof updateCartIcon === 'function') {
-        updateCartIcon();
     }
 });
