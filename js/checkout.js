@@ -1,188 +1,93 @@
+// js/checkout.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements for Address Section
-    const addressSection = document.getElementById('address-section');
-    const addressForm = document.getElementById('address-form');
-    const fullNameInput = document.getElementById('fullName');
-    const addressLine1Input = document.getElementById('addressLine1');
-    const addressLine2Input = document.getElementById('addressLine2');
-    const cityInput = document.getElementById('city');
-    const stateInput = document.getElementById('state');
-    const zipCodeInput = document.getElementById('zipCode');
-    const countryInput = document.getElementById('country');
-    const phoneNumberInput = document.getElementById('phoneNumber');
-    const emailInput = document.getElementById('email');
-    const addressErrorsDiv = document.getElementById('address-errors');
-    const nextToPaymentButton = document.getElementById('next-to-payment-button');
+    const orderSummaryList = document.getElementById('checkout-order-summary-list');
+    const orderTotalElement = document.getElementById('checkout-order-total');
+    const cartItemCountElement = document.getElementById('checkout-cart-item-count');
+    const placeOrderBtn = document.getElementById('place-order-btn');
 
-    // DOM Elements for Payment Section
-    const paymentSection = document.getElementById('payment-section');
-    const paymentForm = document.getElementById('payment-form');
-    const nameOnCardInput = document.getElementById('nameOnCard');
-    const cardNumberInput = document.getElementById('cardNumber');
-    const expiryDateInput = document.getElementById('expiryDate');
-    const cvcInput = document.getElementById('cvc');
-    const paymentErrorsDiv = document.getElementById('payment-errors');
-    const submitButton = document.getElementById('submit-button');
-    const backToAddressButton = document.getElementById('back-to-address-button');
+    // Function to load and display cart items on the checkout page
+    function displayOrderSummary() {
+        const cartItems = JSON.parse(localStorage.getItem('gemmesEtBijouxCart')) || [];
+        orderSummaryList.innerHTML = ''; // Clear existing items
 
-    // Progress Indicator
-    const checkoutProgress = document.getElementById('checkout-progress');
-    const currentStepText = document.getElementById('current-step-text');
+        let total = 0;
+        let totalCount = 0;
 
-    let currentStep = 1; // 1 for Address, 2 for Payment
-    let shippingDetails = {}; // To store validated address details
-
-    // --- Form Input Formatting ---
-
-    // Function to format card number input (add spaces every 4 digits)
-    cardNumberInput.addEventListener('input', (event) => {
-        let value = event.target.value.replace(/\s+/g, ''); // Remove existing spaces
-        let formattedValue = '';
-        for (let i = 0; i < value.length; i++) {
-            if (i > 0 && i % 4 === 0) {
-                formattedValue += ' ';
-            }
-            formattedValue += value[i];
+        if (cartItems.length === 0) {
+            orderSummaryList.innerHTML = `
+                <li class="list-group-item d-flex justify-content-between align-items-center text-muted">
+                    Your cart is empty.
+                </li>
+            `;
+            placeOrderBtn.disabled = true; // Disable order button if cart is empty
+        } else {
+            cartItems.forEach(item => {
+                const subtotal = (item.price * item.quantity).toFixed(2);
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
+                listItem.innerHTML = `
+                    <div>
+                        <h6 class="my-0">${item.name}</h6>
+                        <small class="text-muted">Quantity: ${item.quantity}</small>
+                    </div>
+                    <span class="text-muted">$${subtotal}</span>
+                `;
+                orderSummaryList.appendChild(listItem);
+                total += item.price * item.quantity;
+                totalCount += item.quantity;
+            });
+            placeOrderBtn.disabled = false; // Enable order button
         }
-        event.target.value = formattedValue;
-    });
 
-    // Function to format expiry date input (MM/YY)
-    expiryDateInput.addEventListener('input', (event) => {
-        let value = event.target.value.replace(/\D/g, ''); // Remove non-digits
-        if (value.length > 2) {
-            value = value.substring(0, 2) + '/' + value.substring(2, 4);
-        }
-        event.target.value = value;
-    });
+        // Add the total item to the end of the list
+        const totalListItem = document.createElement('li');
+        totalListItem.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+        totalListItem.innerHTML = `
+            <span>Total (USD)</span>
+            <strong>$${total.toFixed(2)}</strong>
+        `;
+        orderSummaryList.appendChild(totalListItem);
 
-    // --- Form Step Management ---
-
-    function showStep(step) {
-        currentStep = step;
-        if (currentStep === 1) {
-            addressSection.classList.remove('d-none');
-            paymentSection.classList.add('d-none');
-            checkoutProgress.style.width = '50%';
-            currentStepText.textContent = 'Step 1: Shipping Address';
-        } else if (currentStep === 2) {
-            addressSection.classList.add('d-none');
-            paymentSection.classList.remove('d-none');
-            checkoutProgress.style.width = '100%';
-            currentStepText.textContent = 'Step 2: Payment Details';
-        }
+        orderTotalElement.textContent = `$${total.toFixed(2)}`;
+        cartItemCountElement.textContent = totalCount;
     }
 
-    // --- Address Form Submission ---
-    addressForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        addressErrorsDiv.textContent = ''; // Clear previous errors
+    // Handle Place Order button click
+    if (placeOrderBtn) {
+        placeOrderBtn.addEventListener('click', (event) => {
+            // Prevent default form submission for now (we're not sending to a server)
+            event.preventDefault();
 
-        let isValid = true;
+            const form = document.querySelector('.needs-validation');
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return; // Stop if form is not valid
+            }
 
-        // Basic validation for address fields
-        if (fullNameInput.value.trim() === '') {
-            addressErrorsDiv.textContent = 'Full Name is required.';
-            isValid = false;
-        } else if (addressLine1Input.value.trim() === '') {
-            addressErrorsDiv.textContent = 'Address Line 1 is required.';
-            isValid = false;
-        } else if (cityInput.value.trim() === '') {
-            addressErrorsDiv.textContent = 'City is required.';
-            isValid = false;
-        } else if (zipCodeInput.value.trim() === '') {
-            addressErrorsDiv.textContent = 'Zip/Postal Code is required.';
-            isValid = false;
-        } else if (countryInput.value.trim() === '') {
-            addressErrorsDiv.textContent = 'Country is required.';
-            isValid = false;
-        } else if (emailInput.value.trim() === '' || !emailInput.value.includes('@')) {
-            addressErrorsDiv.textContent = 'A valid Email Address is required.';
-            isValid = false;
-        }
+            // In a real application, you would collect form data here
+            // and send it to a backend server for processing payment and order fulfillment.
 
-        if (isValid) {
-            // Store shipping details (in a real app, you'd send this to a backend)
-            shippingDetails = {
-                fullName: fullNameInput.value.trim(),
-                addressLine1: addressLine1Input.value.trim(),
-                addressLine2: addressLine2.value.trim(),
-                city: cityInput.value.trim(),
-                state: stateInput.value.trim(),
-                zipCode: zipCodeInput.value.trim(),
-                country: countryInput.value.trim(),
-                phoneNumber: phoneNumberInput.value.trim(),
-                email: emailInput.value.trim()
-            };
-            console.log('Shipping Details:', shippingDetails); // For debugging
-            showStep(2); // Move to payment section
-        }
-    });
+            alert('Order Placed Successfully! (This is a demo. No real payment processed.)');
 
-    // --- Payment Form Submission ---
-    paymentForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent default form submission
+            // Clear the cart after a successful "order"
+            localStorage.removeItem('gemmesEtBijouxCart');
+            
+            // Optionally clear other cart-related localStorage items if you have them (e.g., 'cartTotal', 'cartCount')
+            // localStorage.removeItem('cartTotal');
+            // localStorage.removeItem('cartCount');
 
-        paymentErrorsDiv.textContent = ''; // Clear previous errors
-        let isValid = true;
+            // Redirect to a confirmation page or home page
+            window.location.href = 'index.html'; // Or 'order-confirmation.html'
+        });
+    }
 
-        // Basic client-side validation for demonstration
-        if (nameOnCardInput.value.trim() === '') {
-            paymentErrorsDiv.textContent = 'Name on Card is required.';
-            isValid = false;
-        } else if (cardNumberInput.value.trim().replace(/\s/g, '').length < 16 || !cardNumberInput.value.replace(/\s/g, '').match(/^\d+$/)) {
-            paymentErrorsDiv.textContent = 'Please enter a valid card number (16 digits).';
-            isValid = false;
-        } else if (!expiryDateInput.value.trim().match(/^(0[1-9]|1[0-2])\/([0-9]{2})$/)) {
-            paymentErrorsDiv.textContent = 'Please enter a valid expiry date (MM/YY format).';
-            isValid = false;
-        } else if (!cvcInput.value.trim().match(/^\d{3,4}$/)) {
-            paymentErrorsDiv.textContent = 'Please enter a valid CVC (3 or 4 digits).';
-            isValid = false;
-        }
+    // Initial display of order summary when page loads
+    displayOrderSummary();
 
-        if (isValid) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Processing...';
-
-            // --- Simulate a successful payment ---
-            console.log('Simulating payment with details:', {
-                name: nameOnCardInput.value,
-                cardNumber: cardNumberInput.value, // In a real app, never send this to console or store unprotected
-                expiry: expiryDateInput.value,
-                cvc: cvcInput.value // In a real app, never send this to console or store unprotected
-            });
-
-            // Simulate a delay for processing (e.g., a "network call" delay)
-            setTimeout(() => {
-                alert('Order placed successfully! (This is a simulation)');
-
-                // Clear the cart after "successful" payment
-                localStorage.removeItem('cartItems');
-                localStorage.removeItem('cartCount');
-                localStorage.removeItem('cartTotal');
-
-                // Update cart display (if cart.js is loaded and has this function)
-                if (typeof updateCartDisplay === 'function') {
-                    updateCartDisplay();
-                }
-
-                // Redirect to a thank you or order confirmation page
-                window.location.href = 'order-success.html';
-            }, 2000); // 2-second delay to mimic processing
-        }
-    });
-
-    // --- Navigation Buttons ---
-    backToAddressButton.addEventListener('click', () => {
-        showStep(1); // Go back to address section
-    });
-
-    // Initial load: show the address section
-    showStep(1);
-
-    // Optional: Call updateCartDisplay when checkout page loads to show current cart icon count
-    if (typeof updateCartDisplay === 'function') {
-        updateCartDisplay();
+    // Call updateCartIcon from cart.js (if cart.js is loaded) to update the floating icon
+    // This assumes cart.js is loaded after checkout.js or globally
+    if (typeof updateCartIcon === 'function') {
+        updateCartIcon();
     }
 });
