@@ -128,20 +128,32 @@ function updateCartIcon() {
 function renderCart() {
     const cartItemsContainer = document.getElementById('cart-items-container');
     const cartTotalElement = document.getElementById('cart-total');
+    // >>> ADDED THESE TWO LINES (Crucial for showing/hiding summary and empty message) <<<
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    const cartSummaryContainer = document.getElementById('cart-summary-container');
 
-    if (!cartItemsContainer || !cartTotalElement) {
+    // >>> UPDATED THE CHECK TO INCLUDE THE NEW ELEMENTS <<<
+    if (!cartItemsContainer || !cartTotalElement || !emptyCartMessage || !cartSummaryContainer) {
         // This function is only for cart.html, so skip if elements aren't found
         return;
     }
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty. Start shopping!</p>';
+        cartItemsContainer.innerHTML = ''; // Clear items (important if going from full to empty)
+        emptyCartMessage.classList.remove('d-none'); // Show empty message
+        cartSummaryContainer.classList.add('d-none');   // Hide summary container and buttons
+
         cartTotalElement.textContent = '0.00';
+        // These 'disabled' settings will apply if the buttons are hidden anyway
         document.getElementById('checkout-btn').disabled = true;
-        document.getElementById('continue-shopping-btn').disabled = false; // Ensure continue shopping is enabled
+        document.getElementById('continue-shopping-btn').disabled = false;
         console.log("Cart is empty. Displaying empty cart message.");
         return;
     }
+
+    // If cart is NOT empty:
+    emptyCartMessage.classList.add('d-none');       // Hide empty message
+    cartSummaryContainer.classList.remove('d-none'); // Show summary container and buttons
 
     document.getElementById('checkout-btn').disabled = false;
     document.getElementById('continue-shopping-btn').disabled = false;
