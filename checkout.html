@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - Gemmes et Bijoux</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Gemmes et Bijoux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"> <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <header>
@@ -40,146 +38,101 @@
     </nav>
   </header>
 
-  <main class="checkout-section py-5">
-    <div class="container">
-      <h2 class="text-center mb-4">Checkout</h2>
-      <p class="lead text-center mb-5">Please provide your shipping and payment details to complete your purchase.</p>
+    <main class="container my-5">
+        <h1>Proceed to Checkout</h1>
+        <p class="lead">Please enter your shipping and payment information.</p>
 
-      <div class="row g-4">
-        <div class="col-md-7 order-md-1">
-          <h4 class="mb-3">Shipping Address</h4>
-          <form class="needs-validation" novalidate>
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <label for="firstName" class="form-label">First name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Shipping Address
+                    </div>
+                    <div class="card-body">
+                        <form id="checkout-form"> <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address1" class="form-label">Address Line 1</label>
+                                <input type="text" class="form-control" id="address1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address2" class="form-label">Address Line 2 (Optional)</label>
+                                <input type="text" class="form-control" id="address2">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="state" class="form-label">State/Province</label>
+                                    <input type="text" class="form-control" id="state" required>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label for="zip" class="form-label">Zip</label>
+                                    <input type="text" class="form-control" id="zip" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" class="form-control" id="country" required>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
 
-              <div class="col-sm-6">
-                <label for="lastName" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Payment Information
+                    </div>
+                    <div class="card-body">
+                        <form> <div class="mb-3">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="expiryDate" class="form-label">Expiry Date (MM/YY)</label>
+                                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cvv" class="form-label">CVV</label>
+                                    <input type="text" class="form-control" id="cvv" placeholder="XXX" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cardName" class="form-label">Name on Card</label>
+                                <input type="text" class="form-control" id="cardName" required>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
 
-              <div class="col-12">
-                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                <div class="invalid-feedback">
-                  Please enter a valid email address for shipping updates.
+                <div class="d-grid gap-2">
+                    <button type="button" id="complete-purchase-btn" class="btn btn-success btn-lg">Complete Purchase</button>
+                    <a href="cart.html" class="btn btn-secondary">Return to Cart</a>
                 </div>
-              </div>
 
-              <div class="col-12">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                <div class="invalid-feedback">
-                  Please enter your shipping address.
-                </div>
-              </div>
-
-              <div class="col-12">
-                <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="address2" placeholder="Apartment, suite, unit, etc.">
-              </div>
-
-              <div class="col-md-5">
-                <label for="country" class="form-label">Country</label>
-                <select class="form-select" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>United Kingdom</option>
-                  <option>Australia</option>
-                  <option>South Africa</option>
-                  <option>Botswana</option>
-                  </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <label for="state" class="form-label">State/Province</label>
-                <input type="text" class="form-control" id="state" required>
-                <div class="invalid-feedback">
-                  Please provide a valid state or province.
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <label for="zip" class="form-label">Zip/Postal Code</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
-                <div class="invalid-feedback">
-                  Zip/Postal code required.
-                </div>
-              </div>
             </div>
 
-            <hr class="my-4">
-
-            <h4 class="mb-3">Payment</h4>
-
-            <div class="row gy-3">
-              <div class="col-md-6">
-                <label for="cc-name" class="form-label">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                  Name on card is required
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Order Summary
+                    </div>
+                    <div class="card-body">
+                        <p>Total Items: <span id="checkout-item-count">0</span></p>
+                        <p>Subtotal: $<span id="checkout-subtotal">0.00</span></p>
+                        <p>Shipping: Free</p>
+                        <h5>Order Total: $<span id="checkout-order-total">0.00</span></h5>
+                        <small class="text-muted">Prices and availability subject to change.</small>
+                    </div>
                 </div>
-              </div>
-
-              <div class="col-md-6">
-                <label for="cc-number" class="form-label">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                <div class="invalid-feedback">
-                  Credit card number is required
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <label for="cc-expiration" class="form-label">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YY" required>
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <label for="cc-cvv" class="form-label">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                <div class="invalid-feedback">
-                  Security code required
-                </div>
-              </div>
             </div>
-
-            <hr class="my-4">
-
-            <button class="w-100 btn btn-primary btn-lg" type="submit" id="place-order-btn">Place Order</button>
-          </form>
         </div>
-
-        <div class="col-md-5 order-md-2 mb-4">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">Your cart</span>
-            <span class="badge bg-primary rounded-pill" id="checkout-cart-item-count">0</span>
-          </h4>
-          <ul class="list-group mb-3" id="checkout-order-summary-list">
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong id="checkout-order-total">$0.00</strong>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </main>
+    </main>
 
   <footer>
     <p>© 2025 Gemmes et Bijoux</p>
@@ -194,29 +147,76 @@
     <i class="bi bi-arrow-up" style="font-size: 1.2rem;"></i>
   </button>
 
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-    // Bootstrap form validation (Optional, but good practice)
-    (function () {
-      'use strict'
-      var forms = document.querySelectorAll('.needs-validation')
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
+        // --- Checkout Page Specific Script ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const completePurchaseBtn = document.getElementById('complete-purchase-btn');
+
+            if (completePurchaseBtn) {
+                completePurchaseBtn.addEventListener('click', () => {
+                    // In a real application, you'd collect form data,
+                    // send it to a server, handle payment, etc.
+                    // For this demo, we'll just simulate success.
+
+                    // Clear the cart on successful purchase
+                    localStorage.removeItem('gemmesEtBijouxCart'); // Clear the entire cart
+
+                    // Redirect to the payment successful page
+                    window.location.href = 'payment-successful.html';
+                });
             }
-            form.classList.add('was-validated')
-          }, false)
-        })
-    })()
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-  <script src="js/cart.js"></script> <script src="js/checkout.js"></script>
-</body>
+
+            // Optional: Populate order summary on checkout page
+            // You would need to load the cart again to get the details
+            function loadCartForSummary() {
+                try {
+                    const storedCart = localStorage.getItem('gemmesEtBijouxCart');
+                    return storedCart ? JSON.parse(storedCart) : [];
+                } catch (e) {
+                    console.error("Error loading cart for summary:", e);
+                    return [];
+                }
+            }
+
+            function getCartTotal(currentCart) {
+                return currentCart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            }
+
+            function getCartItemCount(currentCart) {
+                 return currentCart.reduce((total, item) => total + item.quantity, 0);
+            }
+
+            const currentCart = loadCartForSummary();
+            const itemCount = getCartItemCount(currentCart);
+            const subtotal = getCartTotal(currentCart);
+
+            const checkoutItemCountElement = document.getElementById('checkout-item-count');
+            const checkoutSubtotalElement = document.getElementById('checkout-subtotal');
+            const checkoutOrderTotalElement = document.getElementById('checkout-order-total');
+
+            if (checkoutItemCountElement) checkoutItemCountElement.textContent = itemCount;
+            if (checkoutSubtotalElement) checkoutSubtotalElement.textContent = subtotal.toFixed(2);
+            if (checkoutOrderTotalElement) checkoutOrderTotalElement.textContent = subtotal.toFixed(2); // Assuming shipping is free for total
+            // Also update the cart icon count on this page if it exists in the header
+            const cartIconCountElements = document.querySelectorAll('#cart-item-count, #cart-icon-count-floating');
+            const count = getCartItemCount(currentCart);
+            cartIconCountElements.forEach(element => {
+                if (element) {
+                    element.textContent = count;
+                    if (count > 0) {
+                        element.classList.remove('d-none');
+                    } else {
+                        element.classList.add('d-none');
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    </body>
 </html>
