@@ -128,23 +128,19 @@ function updateCartIcon() {
 function renderCart() {
     const cartItemsContainer = document.getElementById('cart-items-container');
     const cartTotalElement = document.getElementById('cart-total');
-    // >>> ADDED THESE TWO LINES (Crucial for showing/hiding summary and empty message) <<<
     const emptyCartMessage = document.getElementById('empty-cart-message');
     const cartSummaryContainer = document.getElementById('cart-summary-container');
 
-    // >>> UPDATED THE CHECK TO INCLUDE THE NEW ELEMENTS <<<
     if (!cartItemsContainer || !cartTotalElement || !emptyCartMessage || !cartSummaryContainer) {
-        // This function is only for cart.html, so skip if elements aren't found
         return;
     }
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = ''; // Clear items (important if going from full to empty)
+        cartItemsContainer.innerHTML = ''; // Clear items
         emptyCartMessage.classList.remove('d-none'); // Show empty message
         cartSummaryContainer.classList.add('d-none');   // Hide summary container and buttons
 
         cartTotalElement.textContent = '0.00';
-        // These 'disabled' settings will apply if the buttons are hidden anyway
         document.getElementById('checkout-btn').disabled = true;
         document.getElementById('continue-shopping-btn').disabled = false;
         console.log("Cart is empty. Displaying empty cart message.");
@@ -279,11 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length > 0) {
-                cart = []; // Clear the cart
-                saveCart();
-                updateCartIcon();
-                renderCart(); // Re-render to show empty cart message
-                alert("Proceeding to checkout! (Cart has been cleared for this demo.)");
+                // >>> MODIFIED HERE: Redirect directly, remove alert and immediate cart clear <<<
+                window.location.href = 'checkout.html';
             } else {
                 alert("Your cart is empty. Please add items before checking out.");
             }
