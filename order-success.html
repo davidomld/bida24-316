@@ -1,73 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmed! - Gemmes et Bijoux</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed! - Gemmes et Bijoux</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="top-bar">
-          <div>
-            <a href="contact.html">Contact Us</a>
-            <a href="services.html">Services</a>
-          </div>
-          <div>
-            <a href="cart.html" id="cart-icon-link"><i class="bi bi-bag"></i> <span id="cart-item-count" class="badge bg-danger rounded-pill">0</span></a>
+  <header>
+    <div class="top-bar">
+      <div>
+        <a href="contact.html">Contact Us</a>
+        <a href="services.html">Services</a>
+      </div>
+      <div>
+        <a href="cart.html" id="cart-icon-link"><i class="bi bi-bag"></i> <span id="cart-item-count" class="badge bg-danger rounded-pill">0</span></a>
+      </div>
+    </div>
+    <div class="main-logo">Gemmes et Bijoux</div>
+    <nav class="main-menu navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
           </div>
         </div>
-        <div class="main-logo">Gemmes et Bijoux</div>
-        <nav class="main-menu navbar navbar-expand-lg navbar-dark bg-transparent">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
-                  <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                  <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
-                  <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                </ul>
-              </div>
-            </div>
-        </nav>
-    </header>
+    </nav>
+  </header>
 
-    <main class="page-section text-center">
-        <div class="container">
-            <h2 class="mb-4">Thank You for Your Order!</h2>
-            <p class="lead">Your simulated purchase has been successful.</p>
-            <p>We appreciate your business with Gemmes et Bijoux.</p>
-            <a href="index.html" class="btn btn-primary btn-lg mt-4">Continue Shopping</a>
-        </div>
-    </main>
+  <main class="page-section text-center">
+    <div class="container">
+      <div class="py-5">
+        <h2 class="display-4 text-success"><i class="bi bi-check-circle-fill"></i> Order Confirmed!</h2>
+        <p class="lead">Thank you for your purchase from Gemmes et Bijoux. Your order has been successfully placed.</p>
+        <p>An email confirmation with your order details has been sent to your email address.</p>
+        <hr class="my-4">
+        <p>We appreciate your business and hope you enjoy your new exquisite pieces.</p>
+        <a href="collections.html" class="btn btn-primary btn-lg mt-3">Continue Shopping</a>
+        <a href="index.html" class="btn btn-outline-secondary btn-lg mt-3 ms-2">Back to Homepage</a>
+      </div>
+    </div>
+  </main>
 
-    <footer>
-        <p>© 2025 Gemmes et Bijoux</p>
-    </footer>
+  <footer>
+    <p>© 2025 Gemmes et Bijoux</p>
+  </footer>
 
-    <a href="cart.html" class="btn btn-success rounded-circle" style="position: fixed; bottom: 90px; right: 30px; z-index: 999; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
-        <i class="bi bi-bag" style="font-size: 1.5rem;"></i>
-        <span id="cart-icon-count-floating" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
-    </a>
+  <a href="cart.html" class="btn btn-success rounded-circle" style="position: fixed; bottom: 90px; right: 30px; z-index: 999; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+    <i class="bi bi-bag" style="font-size: 1.5rem;"></i>
+    <span id="cart-item-count-floating" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
+  </a>
 
-    <button onclick="scrollToTop()" class="btn btn-dark rounded-circle" style="position: fixed; bottom: 20px; right: 30px; z-index: 999; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-        <i class="bi bi-arrow-up" style="font-size: 1.2rem;"></i>
-    </button>
+  <button onclick="scrollToTop()" class="btn btn-dark rounded-circle" style="position: fixed; bottom: 20px; right: 30px; z-index: 999; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+    <i class="bi bi-arrow-up" style="font-size: 1.2rem;"></i>
+  </button>
 
-    <script>
-        function scrollToTop() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="js/cart.js"></script> </body>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="js/cart.js"></script>
+</body>
 </html>
