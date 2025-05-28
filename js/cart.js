@@ -53,7 +53,7 @@ function addToCart(product) {
  * Updates the quantity of a specific item in the cart.
  * @param {string} productId - The ID of the product to update.
  * @param {number} newQuantity - The new quantity for the product.
- */
+*/
 function updateCartItemQuantity(productId, newQuantity) {
     const item = cart.find(item => item.id === productId);
     if (item) {
@@ -147,6 +147,7 @@ function renderCart() {
         return;
     }
 
+    // If cart is NOT empty:
     emptyCartMessage.classList.add('d-none');       
     cartSummaryContainer.classList.remove('d-none'); 
 
@@ -273,11 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length > 0) {
-                cart = []; // Clear the cart
-                saveCart();
-                updateCartIcon();
-                renderCart(); // Re-render to show empty cart message
-                alert("Proceeding to checkout! (Cart has been cleared for this demo.)");
+                // REDIRECT TO CHECKOUT.HTML
+                window.location.href = 'checkout.html';
+                // Cart clearing is now handled on checkout.html (after 'Complete Purchase')
             } else {
                 alert("Your cart is empty. Please add items before checking out.");
             }
