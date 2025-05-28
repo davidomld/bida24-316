@@ -780,3 +780,44 @@ footer {
         width: 35px; /* Even smaller quantity input */
     }
 }
+/* Checkout Page Specific Styles */
+.payment-form-container {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Style for the Stripe Elements iframe (card number, expiry, CVC) */
+#card-element {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem; /* Match Bootstrap input padding */
+    height: calc(1.5em + 0.75rem + 2px); /* Match Bootstrap input height for single line */
+    background-color: #fff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    display: flex; /* Stripe applies its own iframe, but this helps the container */
+    align-items: center; /* Vertically align content within the element */
+}
+
+#card-element:focus-within { /* Use focus-within for the parent container when iframe is focused */
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    outline: 0;
+}
+
+/* Ensure form labels are dark and bold */
+.payment-form-container .form-label {
+    color: #0b3d2e;
+    font-weight: bold;
+}
+
+/* Style the submit button */
+.payment-form-container .btn-primary {
+    background-color: #0b3d2e;
+    border-color: #0b3d2e;
+}
+
+.payment-form-container .btn-primary:hover {
+    background-color: #072a1e;
+    border-color: #072a1e;
+}
