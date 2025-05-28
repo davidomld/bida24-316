@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = [
         // Rings
-        { id: 'ring1', name: 'Classic Solitaire Ring', price: 1890.00, imageUrl: 'images/ring1.jpeg', category: 'rings' },
+        { id: 'ring1', name: 'Classic Sapphire Ring', price: 1890.00, imageUrl: 'images/ring1.jpeg', category: 'rings' },
         { id: 'ring2', name: 'Vintage Emerald Ring', price: 2500.00, imageUrl: 'images/ring2.jpg', category: 'rings' },
         { id: 'ring3', name: 'Diamond Pave Band', price: 1200.00, imageUrl: 'images/ring3.jpg', category: 'rings' },
         { id: 'ring4', name: 'Modern Sculptural Ring', price: 1550.00, imageUrl: 'images/ring4.jpg', category: 'rings' },
@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'watch4', name: 'Sophisticated Dive Watch', price: 670.00, imageUrl: 'images/watch4.jpg', category: 'watches' },
 
         // Necklaces & Pendants
-        { id: 'necklace1', name: 'Diamond Solitaire Necklace', price: 2100.00, imageUrl: 'images/necklace1.jpeg', category: 'necklaces' },
+        { id: 'necklace1', name: 'Elegant Diamond Necklace', price: 2100.00, imageUrl: 'images/necklace1.jpeg', category: 'necklaces' },
         { id: 'necklace2', name: 'Cultured Pearl Necklace', price: 780.00, imageUrl: 'images/necklace2.jpg', category: 'necklaces' },
         { id: 'necklace3', name: 'Art Deco Gemstone Necklace', price: 1350.00, imageUrl: 'images/necklace3.jpg', category: 'necklaces' },
         { id: 'necklace4', name: 'Personalized Engraved Pendant', price: 490.00, imageUrl: 'images/necklace4.jpg', category: 'necklaces' },
 
         // Earrings
-        { id: 'earring1', name: 'Classic Diamond Studs', price: 950.00, imageUrl: 'images/earring1.jpg', category: 'earrings' },
-        { id: 'earring2', name: 'Pearl Drop Earrings', price: 620.00, imageUrl: 'images/earring2.jpg', category: 'earrings' },
+        { id: 'earring1', name: 'Classic Diamond Studs', price: 950.00, imageUrl: 'images/earring2.jpg', category: 'earrings' },
+        { id: 'earring2', name: 'Handcrafted Gold Earrings', price: 620.00, imageUrl: 'images/earring1.jpg', category: 'earrings' },
         { id: 'earring3', name: 'Modern Gold Hoops', price: 300.00, imageUrl: 'images/earring3.jpg', category: 'earrings' },
         { id: 'earring4', name: 'Statement Chandelier Earrings', price: 1100.00, imageUrl: 'images/earring4.jpg', category: 'earrings' }
     ];
