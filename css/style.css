@@ -436,7 +436,7 @@ footer {
     border: 1px solid #eee;
     border-radius: 8px;
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 15px; /* Consistent padding */
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     position: relative; /* For absolute positioning of remove button */
@@ -547,6 +547,7 @@ footer {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     text-align: right;
+    margin-top: 30px; /* Add margin to separate from cart items */
 }
 
 .cart-summary h3 {
@@ -676,6 +677,7 @@ footer {
         flex-direction: column; /* Stack image and details vertically */
         align-items: flex-start; /* Align contents to the left */
         padding: 10px; /* Reduce padding */
+        margin-bottom: 15px; /* Reduce space between cart items */
     }
 
     .cart-item img {
